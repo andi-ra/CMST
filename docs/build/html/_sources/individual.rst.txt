@@ -1,0 +1,7 @@
+individual module
+=================
+
+.. automodule:: individual
+   :members:
+   :undoc-members:
+   :show-inheritance:

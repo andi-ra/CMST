@@ -1,0 +1,7 @@
+population\_generator module
+============================
+
+.. automodule:: population_generator
+   :members:
+   :undoc-members:
+   :show-inheritance:

@@ -1,0 +1,159 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>hall_of_fame module &#8212; CMST 1 documentation</title>
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
+    
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="individual module" href="individual.html" />
+    <link rel="prev" title="CMST" href="modules.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="individual.html" title="individual module"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="modules.html" title="CMST"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">CMST 1 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="modules.html" accesskey="U">CMST</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">hall_of_fame module</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="module-hall_of_fame">
+<span id="hall-of-fame-module"></span><h1>hall_of_fame module<a class="headerlink" href="#module-hall_of_fame" title="Permalink to this headline">¶</a></h1>
+<dl class="py class">
+<dt id="hall_of_fame.Hof">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">hall_of_fame.</span></code><code class="sig-name descname"><span class="pre">Hof</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">size</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#hall_of_fame.Hof" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Questa classe contiene la Hall of Fame</p>
+<p>In questa classe metto tutto quello che serve per memorizzare la cosiddetta Hall of Fame. Questa classe semplicemente
+conterrà le migliori soluzioni fino ad ora viste.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>L’idea della struttura dati della Hall of Fame proviene dal framework DEAP python.</p>
+</div>
+<dl class="py method">
+<dt id="hall_of_fame.Hof.add">
+<code class="sig-name descname"><span class="pre">add</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">individual</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#hall_of_fame.Hof.add" title="Permalink to this definition">¶</a></dt>
+<dd><p>Aggiungi un nuovo membro alla hall of fame. Ho osservato una nuova soluzione e devo valutare se è il caso di
+immetterlo nella hall of fame. Creo una coda ordinata (in ordine di fitness), inserisco gli individui mai visti
+e quelli vecchi e poiché le dimensioni fra HOF e popolazione potrebbero essere diverse, fintanto che una delle
+due non è vuota continua a immettere gli elementi dalla coda di appoggio alla HOF.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>individual</strong> (<a class="reference internal" href="individual.html#individual.Individual" title="individual.Individual"><em>Individual</em></a>) – Individuo da aggiungere nella HOF</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="hall_of_fame.Hof.update">
+<code class="sig-name descname"><span class="pre">update</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">population</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#hall_of_fame.Hof.update" title="Permalink to this definition">¶</a></dt>
+<dd><p>Aggiorna la hall of fame poiché è cambiata la popolazione a seguito di un ciclo evolutivo. Il procedimento è il
+seguente:
+1. Ordina la popolazione in base alla fitness
+2. Seleziona i migliori individui (i quali stanno in cima alla coda)
+3. Per ognuno di questi individui migliori rimettili nella hall of fame</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>population</strong> (<em>list</em>) – popolazione su cui valutare la hall of fame</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="modules.html"
+                        title="previous chapter">CMST</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="individual.html"
+                        title="next chapter">individual module</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/hall_of_fame.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="individual.html" title="individual module"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="modules.html" title="CMST"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">CMST 1 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="modules.html" >CMST</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">hall_of_fame module</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2021, Andi Dulla.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.5.4.
+    </div>
+  </body>
+</html>

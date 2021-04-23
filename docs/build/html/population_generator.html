@@ -1,0 +1,289 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>population_generator module &#8212; CMST 1 documentation</title>
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
+    
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="individual module" href="individual.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="individual.html" title="individual module"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">CMST 1 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="modules.html" accesskey="U">CMST</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">population_generator module</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="module-population_generator">
+<span id="population-generator-module"></span><h1>population_generator module<a class="headerlink" href="#module-population_generator" title="Permalink to this headline">¶</a></h1>
+<p>Questo modulo è il principale per lanciare tutta l’applicazione. Eseguire il main</p>
+<dl class="py function">
+<dt id="population_generator.breeding_mutation">
+<code class="sig-prename descclassname"><span class="pre">population_generator.</span></code><code class="sig-name descname"><span class="pre">breeding_mutation</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">individuals</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">breeding_mutation_pb</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#population_generator.breeding_mutation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Funzione che implementa la mutazione da accoppiamento, qui i due genitori che producono le due soluzioni figlie
+mescolando i loro cromosomi. Le mutazioni ottenute tramite scambio di parti del cromosoma (implementato tramite
+scambio di pezzi di genotipo) avvengono con probabilità breeding_mutation_pb.</p>
+<ol class="arabic">
+<li><p>In particolare bisogna concentrarsi su questa parte di codice per la selezione:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">TOURNAMENT_SIZE</span><span class="p">):</span>
+    <span class="n">ind</span> <span class="o">=</span> <span class="n">individuals</span><span class="p">[</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">individuals</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)]</span>
+    <span class="k">if</span> <span class="n">best</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">ind</span><span class="o">.</span><span class="n">fitness</span> <span class="o">&gt;</span> <span class="n">best</span><span class="o">.</span><span class="n">fitness</span><span class="p">:</span>
+        <span class="n">best</span> <span class="o">=</span> <span class="n">ind</span>
+<span class="n">mating_group</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">best</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+<li><p>Attenzione anche al single crossover, dentro il for faccio lo scambio:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">()</span> <span class="o">&lt;</span> <span class="n">breeding_mutation_pb</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">ind1</span><span class="p">))):</span>
+        <span class="n">temp</span> <span class="o">=</span> <span class="n">ind1</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+        <span class="n">ind1</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">ind2</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+        <span class="n">ind2</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">temp</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>individuals</strong> – popolazione da cui estrarre i genitori</p></li>
+<li><p><strong>breeding_mutation_pb</strong> – probabilità di mutazione nel cromosoma</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>popolazione con aggiunti i 2 figli generati</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="population_generator.draw_graph">
+<code class="sig-prename descclassname"><span class="pre">population_generator.</span></code><code class="sig-name descname"><span class="pre">draw_graph</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">g</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">layout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#population_generator.draw_graph" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>Funzione per la visualizzazione del grafo, questa usa Networkx per il disegno</dt><dd><ol class="arabic simple">
+<li><p>Faccio una conversione da lista generica (mia rappresentazione precedente) in grafo</p></li>
+<li><p>Setto i parametri che voglio nel disegno</p></li>
+<li><p>Disegno gli archi con le loro etichette</p></li>
+<li><p>Disegno i nodi</p></li>
+</ol>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>g</strong> – grafo da visualizzare</p></li>
+<li><p><strong>layout</strong> – tipo di layout che si vuole (concentrico/gerarchico)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="population_generator.fitness_evaluation">
+<code class="sig-prename descclassname"><span class="pre">population_generator.</span></code><code class="sig-name descname"><span class="pre">fitness_evaluation</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">individuals</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#population_generator.fitness_evaluation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Questa è la funzione di valutazione della fitness. Questa verrà usata nel loop evolutivo per selezionare i componenti
+migliori (nel caso in esame soluzioni-albero con minor somma dei pesi). Il procedimento è il seguente:</p>
+<ul class="simple">
+<li><p>Per ogni individuo estrai il genoma dalla sua struttura dati</p></li>
+<li><p>Creo un’altra matrice di appoggio a partire dal genoma</p></li>
+<li><p>Questa nuova matrice sarà quella su cui mi calcolo lo spanning tree</p></li>
+<li><p>Verifico il vincolo di capacità</p></li>
+<li><p>Converto da spanning tree calcolato sul genotipo a spanning tree ottenuto dalla rete vera</p></li>
+</ul>
+<p>In pratica per non dover ricopiare ogni volta la matrice di adiacenza globale ADJACENCY_MATRIX creata all’inizio, io
+traccio un parallelo fra genotipo di un individuo e matrice di adiacenza. Lo posso fare poiché entrambi sono delle
+rappresentazioni di reti. Quindi lo spanning tree provvisorio me lo calcolo sul genotipo, poi valuto se rispetta i
+vincoli di capacità (cioè non più di N nodi per sotto-albero), osservo che i vincoli di subtour elimination li
+rispetta grazie all’algoritmo di Prim, quindi parto già con uno spanning tree. Se ho un albero ricoprente ammissibile
+a quel punto mi calcolo il peso dell’albero soluzione selezionando gli archi dal genotipo e il peso di tali archi
+dalla matrice globale ADJACENCY_MATRIX. Infine lascio fare il genotipo, popolo la struttura tree[] del mio individuo
+e ripeto questa operazione per ogni membro della popolazione.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>individuals</strong> – popolazione da valutare come fitness</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>restituisco gli individui con la struttura tree[] popolata</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="population_generator.generate_population">
+<code class="sig-prename descclassname"><span class="pre">population_generator.</span></code><code class="sig-name descname"><span class="pre">generate_population</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">num_individuals</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ind_size</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#population_generator.generate_population" title="Permalink to this definition">¶</a></dt>
+<dd><p>Questa funzione genera un insieme di individui che saranno la mia popolazione. Qui per ora sono tutti individui
+generati casualmente. Il genotipo di ogni individuo è inizializzato in maniera aleatoria, un po’ come la matrice
+di adiacenza. Sarà questa sequenza di individui con i loro genotipi a costituire tutto il genoma che sarà oggetto
+delle operazioni successive.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>num_individuals</strong> – </p></li>
+<li><p><strong>ind_size</strong> – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>popolazione costruita con individui</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="population_generator.measure_branch">
+<code class="sig-prename descclassname"><span class="pre">population_generator.</span></code><code class="sig-name descname"><span class="pre">measure_branch</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tree</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parent</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prev</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#population_generator.measure_branch" title="Permalink to this definition">¶</a></dt>
+<dd><p>Questa funzione conta in modo ricorsivo quanti nodi ci sono in un certo sottoalbero/brach e mi accumula il tutto.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>tree</strong> – </p></li>
+<li><p><strong>parent</strong> – </p></li>
+<li><p><strong>prev</strong> – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="population_generator.prim">
+<code class="sig-prename descclassname"><span class="pre">population_generator.</span></code><code class="sig-name descname"><span class="pre">prim</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">matrix</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#population_generator.prim" title="Permalink to this definition">¶</a></dt>
+<dd><p>Classico algoritmo di Prim per ottenere il minimum spanning tree</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>(ripreso e modificato da <a class="reference external" href="https://www.programiz.com/dsa/prim-algorithm">https://www.programiz.com/dsa/prim-algorithm</a>)</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>matrix</strong> – matrice dei costi dell’individuo da cui calcolarmi un SPT</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="population_generator.random_adjacency_matrix">
+<code class="sig-prename descclassname"><span class="pre">population_generator.</span></code><code class="sig-name descname"><span class="pre">random_adjacency_matrix</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">matrix</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#population_generator.random_adjacency_matrix" title="Permalink to this definition">¶</a></dt>
+<dd><p>Funzione che crea una matrice di adiacenza aleatoria per la simulazione dell’algoritmo. Questa sezione è necessaria
+per testare come si comporta l’algoritmo al variare del grafo, dei pesi o degli archi cioè di chi collego o no.</p>
+<p>QUI IL SEED È PREFISSATO, NON È REALMENTE ALEATORIO, SE LO SI VUOLE ALEATORIO, TOGLIERE IL SEED
+#TODO: la firma è simil-C e fa schifo, restituisci la matrice</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>matrix</strong> – matrice in cui appoggiare i risultati</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>matrice del grafo su cui si lavora (da implementare il return)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="population_generator.self_mutation">
+<code class="sig-prename descclassname"><span class="pre">population_generator.</span></code><code class="sig-name descname"><span class="pre">self_mutation</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">individuals</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mutation_pb</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#population_generator.self_mutation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Self-mutation qui con questa funzione modifico il genotipo del singolo individuo, in pratica è come se gli
+modificassi la matrice equivalente dei costi in modo casuale.
+Potrei modificare un ramo, ma se così facessi otterrei una euristica di scambio (branch exchange heuristic).
+Non seguo questa seconda strada (altrimenti otterrei qualcosa come Esau-Williams) modifico la matrice di adiacenza.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>individuals</strong> – popolazione da mutare (in pratica un insieme di individui)</p></li>
+<li><p><strong>mutation_pb</strong> – probabilità di mutazione di un gene</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="individual.html"
+                        title="previous chapter">individual module</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/population_generator.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="individual.html" title="individual module"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">CMST 1 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="modules.html" >CMST</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">population_generator module</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2021, Andi Dulla.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.5.4.
+    </div>
+  </body>
+</html>

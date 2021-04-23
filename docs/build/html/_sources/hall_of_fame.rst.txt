@@ -1,0 +1,7 @@
+hall\_of\_fame module
+=====================
+
+.. automodule:: hall_of_fame
+   :members:
+   :undoc-members:
+   :show-inheritance:

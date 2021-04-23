@@ -1,0 +1,190 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>individual module &#8212; CMST 1 documentation</title>
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
+    
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="population_generator module" href="population_generator.html" />
+    <link rel="prev" title="hall_of_fame module" href="hall_of_fame.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="population_generator.html" title="population_generator module"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="hall_of_fame.html" title="hall_of_fame module"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">CMST 1 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="modules.html" accesskey="U">CMST</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">individual module</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="module-individual">
+<span id="individual-module"></span><h1>individual module<a class="headerlink" href="#module-individual" title="Permalink to this headline">¶</a></h1>
+<dl class="py class">
+<dt id="individual.Individual">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">individual.</span></code><code class="sig-name descname"><span class="pre">Individual</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">iter_range</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#individual.Individual" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Questa classe rappresenta l’individuo cioè la soluzione (che nel mio caso sarà uno spanning tree).</p>
+<p>Ogni soluzione ha dentro di sè la sua fitness che io posso impostare nel file principale o nella funzione
+fitness_evaluation(). Ho cercato di scrivere l’oggetto Individual nel modo più “pythonico” possibile per
+facilitare le operazioni nei file population_generator e hall_of_fame.</p>
+<dl class="simple">
+<dt>tree<span class="classifier">list</span></dt><dd><p>lista di archi ordinata che implementa l’albero ricoprente</p>
+</dd>
+<dt>_fitness<span class="classifier">int</span></dt><dd><p>valore che rappresenta la bontà della soluzione</p>
+</dd>
+<dt>fit_mod<span class="classifier">int</span></dt><dd><p>indicatore del tipo di ottimizzazione che faccio (max o min)</p>
+</dd>
+<dt>genotype<span class="classifier">list[int]</span></dt><dd><p>iterabile che mi permette di scorrere meglio la lista</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt id="individual.Individual.fitness">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">fitness</span></code><a class="headerlink" href="#individual.Individual.fitness" title="Permalink to this definition">¶</a></dt>
+<dd><p>Metodo getter per comodità quando uso l’IDE è bene avercelo</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><strong>_fitness</strong> questo è un valore “privato”</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="individual.Individual.reshape2matrix">
+<code class="sig-name descname"><span class="pre">reshape2matrix</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">NUM_NODES</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">4</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#individual.Individual.reshape2matrix" title="Permalink to this definition">¶</a></dt>
+<dd><p>Funzione che implementa la conversione da genotipo a matrice di adiacenza in un grafo. È in certi versi simile a
+<code class="docutils literal notranslate"><span class="pre">numpy.reshape(shape)</span></code> ma non sto lavorando con array o matrici numpy dunque mi devo reimplementare la mia versione
+di matrix_reshaping per “riarrotolare” il genotipo in una matrice di adiacenza che rappresenta un grafo. Ciò che
+ottengo in uscita è una matrice quadrata, simmetrica e con la diagonale da ignorare (è un +inf):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">individual</span>
+<span class="n">ind</span> <span class="o">=</span> <span class="n">individual</span><span class="o">.</span><span class="n">Individual</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">256</span><span class="p">)</span>
+<span class="n">ind</span><span class="o">.</span><span class="n">genotype</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">11</span><span class="p">]:</span> <span class="p">[</span><span class="mi">193</span><span class="p">,</span> <span class="mi">87</span><span class="p">,</span> <span class="mi">43</span><span class="p">,</span> <span class="mi">27</span><span class="p">]</span>
+<span class="n">ind</span><span class="o">.</span><span class="n">reshape2matrix</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">16</span><span class="p">]:</span>
+<span class="p">[[</span><span class="mi">9223372036854775807</span><span class="p">,</span> <span class="mi">367</span><span class="p">,</span> <span class="mi">323</span><span class="p">],</span>
+<span class="p">[</span><span class="mi">367</span><span class="p">,</span> <span class="mi">9223372036854775807</span><span class="p">,</span> <span class="mi">173</span><span class="p">],</span>
+<span class="p">[</span><span class="mi">323</span><span class="p">,</span> <span class="mi">173</span><span class="p">,</span> <span class="mi">9223372036854775807</span><span class="p">]]</span>
+</pre></div>
+</div>
+<p>Dall’esempio si osserva:</p>
+<ol class="arabic simple">
+<li><p>La diagonale, cioè da un nodo verso se stesso ho un arco con peso infinito in (pratica <code class="docutils literal notranslate"><span class="pre">sys.maxsize</span></code>) per
+dire che archi in loopback non sono da esaminare.</p></li>
+<li><p>La matrice è simmetrica dunque il grafo è non diretto</p></li>
+</ol>
+<p>Un altro pezzo saliente della funzione è l’operazione di riarrotolamento del genotipo:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">L</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">row</span><span class="p">,</span> <span class="n">col</span><span class="p">)</span>
+<span class="n">S</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">row</span><span class="p">,</span> <span class="n">col</span><span class="p">)</span>
+<span class="n">index</span> <span class="o">=</span> <span class="n">L</span> <span class="o">*</span> <span class="p">(</span><span class="n">L</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span>
+<span class="n">index</span> <span class="o">+=</span> <span class="n">S</span> <span class="o">-</span> <span class="mi">1</span>
+<span class="n">index</span> <span class="o">-=</span> <span class="n">L</span>
+<span class="n">matrix</span><span class="p">[</span><span class="n">col</span><span class="p">][</span><span class="n">row</span><span class="p">]</span> <span class="o">=</span> <span class="n">genome</span><span class="p">[</span><span class="n">row</span><span class="p">]</span>
+<span class="n">matrix</span><span class="p">[</span><span class="n">col</span><span class="p">][</span><span class="n">row</span><span class="p">]</span> <span class="o">+=</span> <span class="n">genome</span><span class="p">[</span><span class="n">col</span><span class="p">]</span>
+<span class="n">matrix</span><span class="p">[</span><span class="n">col</span><span class="p">][</span><span class="n">row</span><span class="p">]</span> <span class="o">+=</span> <span class="n">genome</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">index</span><span class="p">)]</span>
+</pre></div>
+</div>
+<p>In pratica prendo due nodi e sommando i loro “pesi” ottengo il peso dell’arco. Di solito si <em>sottraggono</em>
+i pesi, in questo caso ho preferito sommarli per evitare il problema degli archi con pesi negativi, altrimenti
+tocca usare algoritmi label-correcting e diventa tutto più complicato…</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>NUM_NODES</strong> – numero colonne e righe per il reshaping</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>matrice di adiacenza ottenuta riarrotolando il genotipo</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="hall_of_fame.html"
+                        title="previous chapter">hall_of_fame module</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="population_generator.html"
+                        title="next chapter">population_generator module</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/individual.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="population_generator.html" title="population_generator module"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="hall_of_fame.html" title="hall_of_fame module"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">CMST 1 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="modules.html" >CMST</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">individual module</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2021, Andi Dulla.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.5.4.
+    </div>
+  </body>
+</html>

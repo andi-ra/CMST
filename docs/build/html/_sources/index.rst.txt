@@ -1,0 +1,90 @@
+.. CMST documentation master file, created by
+   sphinx-quickstart on Tue Apr 20 13:52:22 2021.
+   You can adapt this file completely to your liking, but it should at least
+   contain the root `toctree` directive.
+
+Benvenuti nella documentazione del progetto CMST!
+=================================================
+Questo package permette la ricerca di una albero ricoprente quando ho l'ulteriore vincolo di capacità. Un po' come anche
+il cammino minimo capacitato anche questo è caratterizzato da una complessità proibitiva. Il primo passo è quello di
+cercare soluzioni sufficientemente buone con cui partire.
+
+Descrizione e prerequisiti
+--------------------------
+Le librerie necessarie ad eseguire il codice sono tutte racchiuse nel file ``requirements.txt``. SI tratta di due
+package per computazione scientifica ed uno per la visualizzazione dei risultati su grafo. Le librerie sono matplotlib,
+numpy e networkx, nel file requirements sono comprensivi di versione.
+
+.. code-block:: bash
+
+   pip3 install -r requirements.txt
+
+Esecuzione
+~~~~~~~~~~
+Per eseguire il codice basta semplicemente lanciare lo script ``population_generator.py``. Riporto un lancio così da
+avere un'idea di come dovrebbe andare l'esecuzione. Non includo le figure.
+
+.. code-block:: bash
+
+    python3 population_generator.py
+
+    73   4  54  61  73   1  26  59  62  35  83  20   4  66  62
+    41   9  31  95  46   5  53  17  77  45  48  53  36  86
+    33  58  22  87  38  84  46  17  58  98  30  56  78
+    48   5  74   0  30  17  24  38  68  46  98  30
+    40  85  70  57  55  60   8  83  74  41  64
+    20  28  52  30   4   4  63  38  77  84
+     9  68  10  19  49  72  47  76  19
+    14  99  98  12  56  21  24  44
+    55  53  57  31  87  35  18
+    79  66  22  15  34  58
+    38  21  84  83  22
+    99  22  61  98
+    44  41  55
+    28   0
+    69
+
+   Fitness: 778
+   Tree: [(1, 3), (1, 7), (1, 9), (1, 2), (1, 15), (15, 11), (15, 12), (7, 8), (8, 13), (3, 16), (2, 10), (3, 5), (9, 14), (9, 6), (7, 4)]
+
+   Fitness: 785
+   Tree: [(1, 9), (1, 15), (1, 2), (1, 14), (2, 6), (1, 10), (14, 7), (15, 4), (2, 16), (1, 8), (14, 13), (1, 3), (15, 5), (1, 11), (2, 12)]
+
+   Fitness: 802
+   Tree: [(1, 12), (1, 7), (1, 11), (1, 5), (1, 14), (12, 16), (1, 6), (1, 10), (7, 15), (1, 8), (12, 13), (12, 2), (1, 4), (7, 9), (11, 3)]
+
+   Fitness: 1000
+   Tree: [(1, 2), (2, 14), (14, 3), (1, 16), (16, 12), (16, 8), (3, 5), (2, 15), (1, 4), (5, 13), (16, 6), (3, 11), (2, 7), (14, 9), (1, 10)]
+
+
+   Time:  10.609375
+   ROOT:  1
+   CAPACITY:  4
+   [(1, 3), (1, 7), (1, 9), (1, 2), (1, 15), (15, 11), (15, 12), (7, 8), (8, 13), (3, 16), (2, 10), (3, 5), (9, 14), (9, 6), (7, 4)]
+   [(1, 9), (1, 15), (1, 2), (1, 14), (2, 6), (1, 10), (14, 7), (15, 4), (2, 16), (1, 8), (14, 13), (1, 3), (15, 5), (1, 11), (2, 12)]
+   [(1, 12), (1, 7), (1, 11), (1, 5), (1, 14), (12, 16), (1, 6), (1, 10), (7, 15), (1, 8), (12, 13), (12, 2), (1, 4), (7, 9), (11, 3)]
+   [(1, 2), (2, 14), (14, 3), (1, 16), (16, 12), (16, 8), (3, 5), (2, 15), (1, 4), (5, 13), (16, 6), (3, 11), (2, 7), (14, 9), (1, 10)]
+
+Nel caso si voglia sperimentare con i vari parametri e vedere cosa succede, editare il file ``population_generator.py``
+e modificare le costanti all'inizio del file stesso. Per semplicità riporto di seguito alcune opzioni "importanti"::
+
+   POP_SIZE = 100                 Dimensione della popolazione, cioè quanti individui creo
+   GRAPH_FILE = 16                Numero di nodi che dovranno essere collegati con il CMST
+   CROSS_MUTATE_PROB = .7         Probabilità di crossover nella mutazione a coppia
+   SELF_MUTATE_PROB = .3          Probabilità di singolo crossover nella mutazione singola
+   NUMB_GENER = 200               Numero di cicli nel loop generativo delle soluzioni
+   HOF_SIZE = 4                   Dimensione della Hall of Fame cioè le migliori soluzioni
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Contents:
+
+   modules
+
+
+Indices and tables
+==================
+
+* :ref:`genindex`
+* :ref:`modindex`
+* :ref:`search`

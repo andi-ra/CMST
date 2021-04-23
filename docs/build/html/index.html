@@ -1,0 +1,197 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Benvenuti nella documentazione del progetto CMST! &#8212; CMST 1 documentation</title>
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
+    
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="CMST" href="modules.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="modules.html" title="CMST"
+             accesskey="N">next</a> |</li>
+        <li class="nav-item nav-item-0"><a href="#">CMST 1 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Benvenuti nella documentazione del progetto CMST!</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="benvenuti-nella-documentazione-del-progetto-cmst">
+<h1>Benvenuti nella documentazione del progetto CMST!<a class="headerlink" href="#benvenuti-nella-documentazione-del-progetto-cmst" title="Permalink to this headline">¶</a></h1>
+<p>Questo package permette la ricerca di una albero ricoprente quando ho l’ulteriore vincolo di capacità. Un po’ come anche
+il cammino minimo capacitato anche questo è caratterizzato da una complessità proibitiva. Il primo passo è quello di
+cercare soluzioni sufficientemente buone con cui partire.</p>
+<div class="section" id="descrizione-e-prerequisiti">
+<h2>Descrizione e prerequisiti<a class="headerlink" href="#descrizione-e-prerequisiti" title="Permalink to this headline">¶</a></h2>
+<p>Le librerie necessarie ad eseguire il codice sono tutte racchiuse nel file <code class="docutils literal notranslate"><span class="pre">requirements.txt</span></code>. SI tratta di due
+package per computazione scientifica ed uno per la visualizzazione dei risultati su grafo. Le librerie sono matplotlib,
+numpy e networkx, nel file requirements sono comprensivi di versione.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip3 install -r requirements.txt
+</pre></div>
+</div>
+<div class="section" id="esecuzione">
+<h3>Esecuzione<a class="headerlink" href="#esecuzione" title="Permalink to this headline">¶</a></h3>
+<p>Per eseguire il codice basta semplicemente lanciare lo script <code class="docutils literal notranslate"><span class="pre">population_generator.py</span></code>. Riporto un lancio così da
+avere un’idea di come dovrebbe andare l’esecuzione. Non includo le figure.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span> python3 population_generator.py
+
+ <span class="m">73</span>   <span class="m">4</span>  <span class="m">54</span>  <span class="m">61</span>  <span class="m">73</span>   <span class="m">1</span>  <span class="m">26</span>  <span class="m">59</span>  <span class="m">62</span>  <span class="m">35</span>  <span class="m">83</span>  <span class="m">20</span>   <span class="m">4</span>  <span class="m">66</span>  <span class="m">62</span>
+ <span class="m">41</span>   <span class="m">9</span>  <span class="m">31</span>  <span class="m">95</span>  <span class="m">46</span>   <span class="m">5</span>  <span class="m">53</span>  <span class="m">17</span>  <span class="m">77</span>  <span class="m">45</span>  <span class="m">48</span>  <span class="m">53</span>  <span class="m">36</span>  <span class="m">86</span>
+ <span class="m">33</span>  <span class="m">58</span>  <span class="m">22</span>  <span class="m">87</span>  <span class="m">38</span>  <span class="m">84</span>  <span class="m">46</span>  <span class="m">17</span>  <span class="m">58</span>  <span class="m">98</span>  <span class="m">30</span>  <span class="m">56</span>  <span class="m">78</span>
+ <span class="m">48</span>   <span class="m">5</span>  <span class="m">74</span>   <span class="m">0</span>  <span class="m">30</span>  <span class="m">17</span>  <span class="m">24</span>  <span class="m">38</span>  <span class="m">68</span>  <span class="m">46</span>  <span class="m">98</span>  <span class="m">30</span>
+ <span class="m">40</span>  <span class="m">85</span>  <span class="m">70</span>  <span class="m">57</span>  <span class="m">55</span>  <span class="m">60</span>   <span class="m">8</span>  <span class="m">83</span>  <span class="m">74</span>  <span class="m">41</span>  <span class="m">64</span>
+ <span class="m">20</span>  <span class="m">28</span>  <span class="m">52</span>  <span class="m">30</span>   <span class="m">4</span>   <span class="m">4</span>  <span class="m">63</span>  <span class="m">38</span>  <span class="m">77</span>  <span class="m">84</span>
+  <span class="m">9</span>  <span class="m">68</span>  <span class="m">10</span>  <span class="m">19</span>  <span class="m">49</span>  <span class="m">72</span>  <span class="m">47</span>  <span class="m">76</span>  <span class="m">19</span>
+ <span class="m">14</span>  <span class="m">99</span>  <span class="m">98</span>  <span class="m">12</span>  <span class="m">56</span>  <span class="m">21</span>  <span class="m">24</span>  <span class="m">44</span>
+ <span class="m">55</span>  <span class="m">53</span>  <span class="m">57</span>  <span class="m">31</span>  <span class="m">87</span>  <span class="m">35</span>  <span class="m">18</span>
+ <span class="m">79</span>  <span class="m">66</span>  <span class="m">22</span>  <span class="m">15</span>  <span class="m">34</span>  <span class="m">58</span>
+ <span class="m">38</span>  <span class="m">21</span>  <span class="m">84</span>  <span class="m">83</span>  <span class="m">22</span>
+ <span class="m">99</span>  <span class="m">22</span>  <span class="m">61</span>  <span class="m">98</span>
+ <span class="m">44</span>  <span class="m">41</span>  <span class="m">55</span>
+ <span class="m">28</span>   <span class="m">0</span>
+ <span class="m">69</span>
+
+Fitness: <span class="m">778</span>
+Tree: <span class="o">[(</span><span class="m">1</span>, <span class="m">3</span><span class="o">)</span>, <span class="o">(</span><span class="m">1</span>, <span class="m">7</span><span class="o">)</span>, <span class="o">(</span><span class="m">1</span>, <span class="m">9</span><span class="o">)</span>, <span class="o">(</span><span class="m">1</span>, <span class="m">2</span><span class="o">)</span>, <span class="o">(</span><span class="m">1</span>, <span class="m">15</span><span class="o">)</span>, <span class="o">(</span><span class="m">15</span>, <span class="m">11</span><span class="o">)</span>, <span class="o">(</span><span class="m">15</span>, <span class="m">12</span><span class="o">)</span>, <span class="o">(</span><span class="m">7</span>, <span class="m">8</span><span class="o">)</span>, <span class="o">(</span><span class="m">8</span>, <span class="m">13</span><span class="o">)</span>, <span class="o">(</span><span class="m">3</span>, <span class="m">16</span><span class="o">)</span>, <span class="o">(</span><span class="m">2</span>, <span class="m">10</span><span class="o">)</span>, <span class="o">(</span><span class="m">3</span>, <span class="m">5</span><span class="o">)</span>, <span class="o">(</span><span class="m">9</span>, <span class="m">14</span><span class="o">)</span>, <span class="o">(</span><span class="m">9</span>, <span class="m">6</span><span class="o">)</span>, <span class="o">(</span><span class="m">7</span>, <span class="m">4</span><span class="o">)]</span>
+
+Fitness: <span class="m">785</span>
+Tree: <span class="o">[(</span><span class="m">1</span>, <span class="m">9</span><span class="o">)</span>, <span class="o">(</span><span class="m">1</span>, <span class="m">15</span><span class="o">)</span>, <span class="o">(</span><span class="m">1</span>, <span class="m">2</span><span class="o">)</span>, <span class="o">(</span><span class="m">1</span>, <span class="m">14</span><span class="o">)</span>, <span class="o">(</span><span class="m">2</span>, <span class="m">6</span><span class="o">)</span>, <span class="o">(</span><span class="m">1</span>, <span class="m">10</span><span class="o">)</span>, <span class="o">(</span><span class="m">14</span>, <span class="m">7</span><span class="o">)</span>, <span class="o">(</span><span class="m">15</span>, <span class="m">4</span><span class="o">)</span>, <span class="o">(</span><span class="m">2</span>, <span class="m">16</span><span class="o">)</span>, <span class="o">(</span><span class="m">1</span>, <span class="m">8</span><span class="o">)</span>, <span class="o">(</span><span class="m">14</span>, <span class="m">13</span><span class="o">)</span>, <span class="o">(</span><span class="m">1</span>, <span class="m">3</span><span class="o">)</span>, <span class="o">(</span><span class="m">15</span>, <span class="m">5</span><span class="o">)</span>, <span class="o">(</span><span class="m">1</span>, <span class="m">11</span><span class="o">)</span>, <span class="o">(</span><span class="m">2</span>, <span class="m">12</span><span class="o">)]</span>
+
+Fitness: <span class="m">802</span>
+Tree: <span class="o">[(</span><span class="m">1</span>, <span class="m">12</span><span class="o">)</span>, <span class="o">(</span><span class="m">1</span>, <span class="m">7</span><span class="o">)</span>, <span class="o">(</span><span class="m">1</span>, <span class="m">11</span><span class="o">)</span>, <span class="o">(</span><span class="m">1</span>, <span class="m">5</span><span class="o">)</span>, <span class="o">(</span><span class="m">1</span>, <span class="m">14</span><span class="o">)</span>, <span class="o">(</span><span class="m">12</span>, <span class="m">16</span><span class="o">)</span>, <span class="o">(</span><span class="m">1</span>, <span class="m">6</span><span class="o">)</span>, <span class="o">(</span><span class="m">1</span>, <span class="m">10</span><span class="o">)</span>, <span class="o">(</span><span class="m">7</span>, <span class="m">15</span><span class="o">)</span>, <span class="o">(</span><span class="m">1</span>, <span class="m">8</span><span class="o">)</span>, <span class="o">(</span><span class="m">12</span>, <span class="m">13</span><span class="o">)</span>, <span class="o">(</span><span class="m">12</span>, <span class="m">2</span><span class="o">)</span>, <span class="o">(</span><span class="m">1</span>, <span class="m">4</span><span class="o">)</span>, <span class="o">(</span><span class="m">7</span>, <span class="m">9</span><span class="o">)</span>, <span class="o">(</span><span class="m">11</span>, <span class="m">3</span><span class="o">)]</span>
+
+Fitness: <span class="m">1000</span>
+Tree: <span class="o">[(</span><span class="m">1</span>, <span class="m">2</span><span class="o">)</span>, <span class="o">(</span><span class="m">2</span>, <span class="m">14</span><span class="o">)</span>, <span class="o">(</span><span class="m">14</span>, <span class="m">3</span><span class="o">)</span>, <span class="o">(</span><span class="m">1</span>, <span class="m">16</span><span class="o">)</span>, <span class="o">(</span><span class="m">16</span>, <span class="m">12</span><span class="o">)</span>, <span class="o">(</span><span class="m">16</span>, <span class="m">8</span><span class="o">)</span>, <span class="o">(</span><span class="m">3</span>, <span class="m">5</span><span class="o">)</span>, <span class="o">(</span><span class="m">2</span>, <span class="m">15</span><span class="o">)</span>, <span class="o">(</span><span class="m">1</span>, <span class="m">4</span><span class="o">)</span>, <span class="o">(</span><span class="m">5</span>, <span class="m">13</span><span class="o">)</span>, <span class="o">(</span><span class="m">16</span>, <span class="m">6</span><span class="o">)</span>, <span class="o">(</span><span class="m">3</span>, <span class="m">11</span><span class="o">)</span>, <span class="o">(</span><span class="m">2</span>, <span class="m">7</span><span class="o">)</span>, <span class="o">(</span><span class="m">14</span>, <span class="m">9</span><span class="o">)</span>, <span class="o">(</span><span class="m">1</span>, <span class="m">10</span><span class="o">)]</span>
+
+
+Time:  <span class="m">10</span>.609375
+ROOT:  <span class="m">1</span>
+CAPACITY:  <span class="m">4</span>
+<span class="o">[(</span><span class="m">1</span>, <span class="m">3</span><span class="o">)</span>, <span class="o">(</span><span class="m">1</span>, <span class="m">7</span><span class="o">)</span>, <span class="o">(</span><span class="m">1</span>, <span class="m">9</span><span class="o">)</span>, <span class="o">(</span><span class="m">1</span>, <span class="m">2</span><span class="o">)</span>, <span class="o">(</span><span class="m">1</span>, <span class="m">15</span><span class="o">)</span>, <span class="o">(</span><span class="m">15</span>, <span class="m">11</span><span class="o">)</span>, <span class="o">(</span><span class="m">15</span>, <span class="m">12</span><span class="o">)</span>, <span class="o">(</span><span class="m">7</span>, <span class="m">8</span><span class="o">)</span>, <span class="o">(</span><span class="m">8</span>, <span class="m">13</span><span class="o">)</span>, <span class="o">(</span><span class="m">3</span>, <span class="m">16</span><span class="o">)</span>, <span class="o">(</span><span class="m">2</span>, <span class="m">10</span><span class="o">)</span>, <span class="o">(</span><span class="m">3</span>, <span class="m">5</span><span class="o">)</span>, <span class="o">(</span><span class="m">9</span>, <span class="m">14</span><span class="o">)</span>, <span class="o">(</span><span class="m">9</span>, <span class="m">6</span><span class="o">)</span>, <span class="o">(</span><span class="m">7</span>, <span class="m">4</span><span class="o">)]</span>
+<span class="o">[(</span><span class="m">1</span>, <span class="m">9</span><span class="o">)</span>, <span class="o">(</span><span class="m">1</span>, <span class="m">15</span><span class="o">)</span>, <span class="o">(</span><span class="m">1</span>, <span class="m">2</span><span class="o">)</span>, <span class="o">(</span><span class="m">1</span>, <span class="m">14</span><span class="o">)</span>, <span class="o">(</span><span class="m">2</span>, <span class="m">6</span><span class="o">)</span>, <span class="o">(</span><span class="m">1</span>, <span class="m">10</span><span class="o">)</span>, <span class="o">(</span><span class="m">14</span>, <span class="m">7</span><span class="o">)</span>, <span class="o">(</span><span class="m">15</span>, <span class="m">4</span><span class="o">)</span>, <span class="o">(</span><span class="m">2</span>, <span class="m">16</span><span class="o">)</span>, <span class="o">(</span><span class="m">1</span>, <span class="m">8</span><span class="o">)</span>, <span class="o">(</span><span class="m">14</span>, <span class="m">13</span><span class="o">)</span>, <span class="o">(</span><span class="m">1</span>, <span class="m">3</span><span class="o">)</span>, <span class="o">(</span><span class="m">15</span>, <span class="m">5</span><span class="o">)</span>, <span class="o">(</span><span class="m">1</span>, <span class="m">11</span><span class="o">)</span>, <span class="o">(</span><span class="m">2</span>, <span class="m">12</span><span class="o">)]</span>
+<span class="o">[(</span><span class="m">1</span>, <span class="m">12</span><span class="o">)</span>, <span class="o">(</span><span class="m">1</span>, <span class="m">7</span><span class="o">)</span>, <span class="o">(</span><span class="m">1</span>, <span class="m">11</span><span class="o">)</span>, <span class="o">(</span><span class="m">1</span>, <span class="m">5</span><span class="o">)</span>, <span class="o">(</span><span class="m">1</span>, <span class="m">14</span><span class="o">)</span>, <span class="o">(</span><span class="m">12</span>, <span class="m">16</span><span class="o">)</span>, <span class="o">(</span><span class="m">1</span>, <span class="m">6</span><span class="o">)</span>, <span class="o">(</span><span class="m">1</span>, <span class="m">10</span><span class="o">)</span>, <span class="o">(</span><span class="m">7</span>, <span class="m">15</span><span class="o">)</span>, <span class="o">(</span><span class="m">1</span>, <span class="m">8</span><span class="o">)</span>, <span class="o">(</span><span class="m">12</span>, <span class="m">13</span><span class="o">)</span>, <span class="o">(</span><span class="m">12</span>, <span class="m">2</span><span class="o">)</span>, <span class="o">(</span><span class="m">1</span>, <span class="m">4</span><span class="o">)</span>, <span class="o">(</span><span class="m">7</span>, <span class="m">9</span><span class="o">)</span>, <span class="o">(</span><span class="m">11</span>, <span class="m">3</span><span class="o">)]</span>
+<span class="o">[(</span><span class="m">1</span>, <span class="m">2</span><span class="o">)</span>, <span class="o">(</span><span class="m">2</span>, <span class="m">14</span><span class="o">)</span>, <span class="o">(</span><span class="m">14</span>, <span class="m">3</span><span class="o">)</span>, <span class="o">(</span><span class="m">1</span>, <span class="m">16</span><span class="o">)</span>, <span class="o">(</span><span class="m">16</span>, <span class="m">12</span><span class="o">)</span>, <span class="o">(</span><span class="m">16</span>, <span class="m">8</span><span class="o">)</span>, <span class="o">(</span><span class="m">3</span>, <span class="m">5</span><span class="o">)</span>, <span class="o">(</span><span class="m">2</span>, <span class="m">15</span><span class="o">)</span>, <span class="o">(</span><span class="m">1</span>, <span class="m">4</span><span class="o">)</span>, <span class="o">(</span><span class="m">5</span>, <span class="m">13</span><span class="o">)</span>, <span class="o">(</span><span class="m">16</span>, <span class="m">6</span><span class="o">)</span>, <span class="o">(</span><span class="m">3</span>, <span class="m">11</span><span class="o">)</span>, <span class="o">(</span><span class="m">2</span>, <span class="m">7</span><span class="o">)</span>, <span class="o">(</span><span class="m">14</span>, <span class="m">9</span><span class="o">)</span>, <span class="o">(</span><span class="m">1</span>, <span class="m">10</span><span class="o">)]</span>
+</pre></div>
+</div>
+<p>Nel caso si voglia sperimentare con i vari parametri e vedere cosa succede, editare il file <code class="docutils literal notranslate"><span class="pre">population_generator.py</span></code>
+e modificare le costanti all’inizio del file stesso. Per semplicità riporto di seguito alcune opzioni “importanti”:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">POP_SIZE</span> <span class="o">=</span> <span class="mi">100</span>                 <span class="n">Dimensione</span> <span class="n">della</span> <span class="n">popolazione</span><span class="p">,</span> <span class="n">cioè</span> <span class="n">quanti</span> <span class="n">individui</span> <span class="n">creo</span>
+<span class="n">GRAPH_FILE</span> <span class="o">=</span> <span class="mi">16</span>                <span class="n">Numero</span> <span class="n">di</span> <span class="n">nodi</span> <span class="n">che</span> <span class="n">dovranno</span> <span class="n">essere</span> <span class="n">collegati</span> <span class="n">con</span> <span class="n">il</span> <span class="n">CMST</span>
+<span class="n">CROSS_MUTATE_PROB</span> <span class="o">=</span> <span class="o">.</span><span class="mi">7</span>         <span class="n">Probabilità</span> <span class="n">di</span> <span class="n">crossover</span> <span class="n">nella</span> <span class="n">mutazione</span> <span class="n">a</span> <span class="n">coppia</span>
+<span class="n">SELF_MUTATE_PROB</span> <span class="o">=</span> <span class="o">.</span><span class="mi">3</span>          <span class="n">Probabilità</span> <span class="n">di</span> <span class="n">singolo</span> <span class="n">crossover</span> <span class="n">nella</span> <span class="n">mutazione</span> <span class="n">singola</span>
+<span class="n">NUMB_GENER</span> <span class="o">=</span> <span class="mi">200</span>               <span class="n">Numero</span> <span class="n">di</span> <span class="n">cicli</span> <span class="n">nel</span> <span class="n">loop</span> <span class="n">generativo</span> <span class="n">delle</span> <span class="n">soluzioni</span>
+<span class="n">HOF_SIZE</span> <span class="o">=</span> <span class="mi">4</span>                   <span class="n">Dimensione</span> <span class="n">della</span> <span class="n">Hall</span> <span class="n">of</span> <span class="n">Fame</span> <span class="n">cioè</span> <span class="n">le</span> <span class="n">migliori</span> <span class="n">soluzioni</span>
+</pre></div>
+</div>
+<div class="toctree-wrapper compound">
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="modules.html">CMST</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="hall_of_fame.html">hall_of_fame module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="individual.html">individual module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="population_generator.html">population_generator module</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="indices-and-tables">
+<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
+<li><p><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></p></li>
+<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
+</ul>
+</div>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="#">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Benvenuti nella documentazione del progetto CMST!</a><ul>
+<li><a class="reference internal" href="#descrizione-e-prerequisiti">Descrizione e prerequisiti</a><ul>
+<li><a class="reference internal" href="#esecuzione">Esecuzione</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#indices-and-tables">Indices and tables</a></li>
+</ul>
+
+  <h4>Next topic</h4>
+  <p class="topless"><a href="modules.html"
+                        title="next chapter">CMST</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/index.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="modules.html" title="CMST"
+             >next</a> |</li>
+        <li class="nav-item nav-item-0"><a href="#">CMST 1 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Benvenuti nella documentazione del progetto CMST!</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2021, Andi Dulla.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.5.4.
+    </div>
+  </body>
+</html>
