@@ -81,6 +81,7 @@ def random_adjacency_matrix(matrix):
 
     QUI IL SEED È PREFISSATO, NON È REALMENTE ALEATORIO, SE LO SI VUOLE ALEATORIO, TOGLIERE IL SEED
     #TODO: la firma è simil-C e fa schifo, restituisci la matrice
+    #TODO: valutare comportamenti strani
 
     :param matrix: matrice in cui appoggiare i risultati
     :return: matrice del grafo su cui si lavora (da implementare il return)
