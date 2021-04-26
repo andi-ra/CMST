@@ -19,19 +19,19 @@ INDEX_RANGE = 256
 MINIMIZE = True
 MAXIMUM_FITNESS = 1000
 POP_SIZE = 100
-GRAPH_FILE = 16
 CROSS_MUTATE_PROB = .7
 SELF_MUTATE_PROB = .3
 NUMB_GENER = 200
 HOF_SIZE = 4
 TOURNAMENT_SIZE = 30
-NUM_NODES = GRAPH_FILE
+NUM_NODES = 10
 ROOT = 1
 CAPACITY = 4
 TREE_LIKE_LAYOUT = 1
 MESH_LIKE_LAYOUT = 0
 PLANAR_LAYOUT = 4
 SPECTRAL_LAYOUT = 3
+ADJACENCY_MATRIX = [[0 for x in range(NUM_NODES)] for x in range(NUM_NODES)]
 
 
 def draw_graph(g, layout=MESH_LIKE_LAYOUT):
@@ -86,10 +86,8 @@ def random_adjacency_matrix(matrix):
     :return: matrice del grafo su cui si lavora (da implementare il return)
     """
     global MAXIMUM_FITNESS
-    global ADJACENCY_MATRIX
-    ADJACENCY_MATRIX = [[0 for x in range(NUM_NODES)] for x in range(NUM_NODES)]
-    for col in range(len(ADJACENCY_MATRIX)):
-        for row in range(col, len(ADJACENCY_MATRIX[col])):
+    for col in range(len(ADJACENCY_MATRIX)-1):
+        for row in range(col, len(ADJACENCY_MATRIX[col])-1):
             if col != row:
                 value = random.randint(0, 100)
             else:
