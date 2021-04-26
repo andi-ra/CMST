@@ -86,8 +86,8 @@ def random_adjacency_matrix(matrix):
     :return: matrice del grafo su cui si lavora (da implementare il return)
     """
     global MAXIMUM_FITNESS
-    for col in range(len(ADJACENCY_MATRIX)-1):
-        for row in range(col, len(ADJACENCY_MATRIX[col])-1):
+    for col in range(len(ADJACENCY_MATRIX)):
+        for row in range(col, len(ADJACENCY_MATRIX[col])):
             if col != row:
                 value = random.randint(0, 100)
             else:
